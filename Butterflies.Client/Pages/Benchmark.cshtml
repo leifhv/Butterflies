@@ -1,0 +1,10 @@
+﻿@page "/benchmark"
+@inherits BenchmarkComponent
+
+<button onclick=@(() => InitBenchmark())>Init</button>
+<button onclick=@(() => RunBlazorBubblesort())>Run Blazor bubblesort</button>
+<button onclick=@(() => RunJsBubblesort())>Run JS bubblesort</button>
+<button onclick=@(() => RunServerBubblesort())>Run server bubblesort</button>
+<p>@NumbersText</p>
+<p>@StatusText</p>
+<form></form>

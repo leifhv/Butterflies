@@ -1,0 +1,89 @@
+﻿@page "/butterfly"
+@inherits ButterflyComponent
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+
+<div class="row">
+    <div class="col-sm-4" style="background-color:snow;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Color</th>
+                    <th>Size</th>
+                    <th>Wi</th>
+                    <th>N</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var butterfly in _butterflyList)
+                {
+                <tr>
+                    <td>@butterfly.Id.Substring(0,6)</td>
+                    <td>@butterfly.Name</td>
+                    <td>@butterfly.Color</td>
+                    <td>@butterfly.Scale</td>
+                    <td>@butterfly.NumWings</td>
+                    <td>@butterfly.N</td>
+                    <td>
+                        <button class="btn" onclick="@(() => SelectButterfly(butterfly))"><i class="fa fa-angle-double-down"></i></button>
+                    </td>
+                    <td>
+                        <button class="btn" onclick="@(() => DeleteButterfly(butterfly))"><i class="fa fa-trash"></i></button>
+                    </td>
+                    <td></td>
+                </tr>
+                }
+            </tbody>
+        </table>
+        <form>
+            <div class="input-group input-group-sm">
+                <div class="form-group">
+                    <label class="col-form-label">Id:</label>
+                    <input readonly type="text" class="form-control" bind=@_selectedButterfly.Id />
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label">Name:</label>
+                    <input type="text" class="form-control" bind=@_selectedButterfly.Name />
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="col-form-label">Color:</label>
+                    <input class="form-control color-form" type="color" bind=@_selectedButterfly.Color />
+                    <input class="form-control" type="text" bind=@_selectedButterfly.Color />
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="col-form-label">Scale:</label>
+                    <input class="form-control" type="text" bind=@_selectedButterfly.Scale />
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="col-form-label">Wings:</label>
+                    <input class="form-control" type="text" bind=@_selectedButterfly.NumWings />
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="col-form-label">N:</label>
+                    <input class="form-control" type="text" bind=@_selectedButterfly.N />
+                </div>
+            </div>
+        </form>
+        <button class="btn btn-primary btn-xs"  onclick="@(() => PaintButterfly())">Paint</button>
+        <button class="btn btn-primary btn-xs" onclick="@(() => SaveButterfly())">Save</button>
+        <button class="btn btn-primary btn-xs" onclick="@(() => NewButterfly())">New</button>
+
+    </div>
+    <div class="col-sm-8" style="background-color:azure;">
+        <BECanvas Width="800" Height="800" ref="@_canvasReference"></BECanvas>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+

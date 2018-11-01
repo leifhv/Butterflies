@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width">
+    <title>Butterflies</title>
+    <base href="/" />
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/site.css" rel="stylesheet" />
+</head>
+<body>
+
+    <app>Loading...</app>
+
+    <script src="_framework/blazor.webassembly.js"></script>
+
+
+    <script>
+        // Define a very simple JavaScript function that just prints
+        // the input parameter to the browser's console
+        window.sort = (numbers) => {
+            var highValue;
+            for (var i = numbers.length - 1; i > 0; i--)
+            {
+                for (var j = 0; j <= i - 1; j++)
+                {
+                    if (numbers[j] > numbers[j + 1]) {
+                        highValue = numbers[j];
+                        numbers[j] = numbers[j + 1];
+                        numbers[j + 1] = highValue;
+                    }
+                }
+            }
+            return numbers;
+        };
+    </script>   
+
+
+</body>
+</html>
